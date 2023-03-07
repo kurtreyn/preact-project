@@ -7,7 +7,6 @@ import style from './formStyle';
 export default function Form() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const randomId = uuidv4();
   const date = new Date().toLocaleDateString('en-US');
@@ -20,14 +19,12 @@ export default function Form() {
     date: date,
     name: name,
     email: email,
-    password: password,
     message: message,
   };
 
   const handleReset = () => {
     setName('');
     setEmail('');
-    setPassword('');
     setMessage('');
   };
 
@@ -73,14 +70,6 @@ export default function Form() {
           class={style.form_input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          class={style.form_input}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
         />
         <textarea
           name="message"
