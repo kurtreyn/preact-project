@@ -1,4 +1,6 @@
+/* eslint-disable object-shorthand */
 import { useState } from 'preact/hooks';
+import { v4 as uuidv4 } from 'uuid';
 import Button from '../Button/Button';
 import style from './formStyle';
 
@@ -7,8 +9,15 @@ export default function Form() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const randomId = uuidv4();
+  const date = new Date().toLocaleDateString('en-US');
+  console.log('date', date);
+  // eslint-disable-next-line no-unused-vars
+  const backendHost = 'http://localhost:3000/api';
 
   const formData = {
+    form_id: randomId,
+    date: date,
     name: name,
     email: email,
     password: password,
@@ -22,9 +31,27 @@ export default function Form() {
     setMessage('');
   };
 
+  async function postData(url = backendHost, data = formData) {
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      body: JSON.stringify(data),
+    })
+      .then((result) => {
+        console.log(result.json());
+      })
+      .catch((error) => {
+        console.log('Errors:', error);
+      });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('formData', formData);
+    postData();
+    // console.log('formData', formData);
     handleReset();
   };
 
