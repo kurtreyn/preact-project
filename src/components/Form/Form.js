@@ -12,7 +12,7 @@ export default function Form() {
   const date = new Date().toLocaleDateString('en-US');
   // eslint-disable-next-line no-unused-vars
   const localBackendHost = 'http://localhost:3000/api';
-  const backendHost = 'https://preact-demo-backend.onrender.com';
+  const backendHost = 'https://preact-demo-backend.onrender.com/api';
 
   const formData = {
     form_id: randomId,
