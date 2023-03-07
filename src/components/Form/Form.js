@@ -11,7 +11,6 @@ export default function Form() {
   const [message, setMessage] = useState('');
   const randomId = uuidv4();
   const date = new Date().toLocaleDateString('en-US');
-  console.log('date', date);
   // eslint-disable-next-line no-unused-vars
   const backendHost = 'http://localhost:3000/api';
 
