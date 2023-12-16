@@ -11,7 +11,7 @@ export default function Form() {
   const randomId = uuidv4();
   const date = new Date().toLocaleDateString('en-US');
   // eslint-disable-next-line no-unused-vars
-  const localBackendHost = 'http://localhost:3000/api';
+  // const localBackendHost = 'http://127.0.0.1:3000/api';
   const backendHost = 'https://preact-demo-backend.onrender.com/api';
 
   const formData = {
